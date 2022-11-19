@@ -3,13 +3,15 @@ class ReviewsController < ApplicationController
     skip_before_action :redirect_if_not_logged_in, only: [:index, :show]
 
  def index
-    if params[:user_id]
-      @reviews = Review.where(user_id: params[:user_id]).order_by_date
-    elsif params[:recipe_id]
-      @reviews = Review.where(recipe_id: params[:recipe_id]).order_by_date
-    else
-      @reviews = Review.order_by_recipe
-    end
+    reviews = Review.all
+    render json: reviews
+    # if params[:user_id]
+    #   @reviews = Review.where(user_id: params[:user_id]).order_by_date
+    # elsif params[:book_id]
+    #   @reviews = Review.where(book_id: params[:book_id]).order_by_date
+    # else
+    #   @reviews = Review.order_by_book
+    # end
   end
 
     def show
