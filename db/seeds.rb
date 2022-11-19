@@ -8,3 +8,4 @@ books = Book.create([{title: 'Pride and Prejudice', author: 'Jane Austen', page_
 #   Character.create(
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+reviews = Review.create
