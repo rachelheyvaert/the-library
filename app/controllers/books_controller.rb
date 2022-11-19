@@ -18,7 +18,6 @@ class BooksController < ApplicationController
         render json: book, status: :accepted
     end
 
-
     def destroy
         book = Book.find(params[:id])
         book.destroy
