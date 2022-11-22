@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+    before_action only: [:show]
     def index 
         render json: Book.all, status: :ok
     end
