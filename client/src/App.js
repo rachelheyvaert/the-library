@@ -15,16 +15,20 @@ import ReviewForm from './components/ReviewForm.js'
 function App() {
 const [books, setBooks] = useState([]);
 const [errors, setErrors] = useState(false)
+const [currentUser, setCurrentUser] = useState(false)
+
 
 useEffect(() =>{
   fetchBooks()
-  // console.log(books)
+  console.log(books)
+  console.log(currentUser)
 },[])
 
 const fetchBooks = () => {
   fetch('/books')
   .then(res => {
     if(res.ok){
+
       res.json().then(setBooks)
       console.log(books)
     }else {
@@ -32,18 +36,22 @@ const fetchBooks = () => {
     }
   })
 }
+
+const addBook = (book) => setBooks(current => [...current, book])
+const updateUser = (user) => setCurrentUser(user)
+const deleteBook = (id) => setBooks(current => current.filter(b => b.id !== id))
 if(errors) return <h1>{errors}</h1>
 
   return (
     <div className="App">
       <GlobalStyle />
-      <Navigation />
+      <Navigation currentUser={currentUser} updateUser={updateUser} />
       <Switch>
       <Route exact path='/'>
           <Home />
         </Route>
         <Route path='users/new'>
-          <SignupForm />
+          <SignupForm updateUser={updateUser}/>
         </Route>
         <Route path='/users/:id'>
         <UserPage />
@@ -52,10 +60,10 @@ if(errors) return <h1>{errors}</h1>
         <Login />
       </Route>
         <Route path='books/new'>
-          <BookCard/>
+          <BookCard addBook={addBook}/>
         </Route>
         <Route exact path='/book/:id'>
-         <BookDetail />
+         <BookDetail deleteBook={deleteBook}/>
       </Route>
         <Route exact path='reviews'>
           <ReviewContainer />
