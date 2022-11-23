@@ -3,7 +3,13 @@ import {createGlobalStyle} from 'styled-components'
 import { Route, Switch } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import Home from './components/Home.js';
+import SignupForm from './components/SignupForm'
+import BookCard from './components/BookCard'
 import Navigation from './components/Navigation'
+import BookContainter from './components/BookContainter.js';
+import UserPage from './components/UserPage.js';
+import Login from './components/Login.js';
+
 
 function App() {
 const [books, setBooks] = useState([]);
@@ -29,8 +35,27 @@ if(errors) return <h1>{errors}</h1>
 
   return (
     <div className="App">
+      <GlobalStyle />
       <Navigation />
+      <Switch>
+        <Route path='users/new'>
+          <SignupForm />
+        </Route>
+        <Route path='/users/:id'>
+        <UserPage />
+      </Route>
+        <Route path='/login' >
+        <Login />
+      </Route>
+        <Route path='books/new'>
+          <BookCard/>
+        </Route>
+        <Route exact path='/'>
+          <BookContainter />
+        </Route>
       <Home />
+      </Switch>
+
 
     </div>
   );
