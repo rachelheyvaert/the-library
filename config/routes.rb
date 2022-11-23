@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [ :index, :show, :create, :update, :destroy]
   resources :users, only: [:show, :create]
   resources :books, only: [ :index, :show, :create, :update, :destroy]
-  get "/", to: 'books#index'
+  get "/books", to: 'books#index'
   get "/me", to: "users#show"
   get '/signup', to: 'users#new'
   post '/login' => 'sessions#create'

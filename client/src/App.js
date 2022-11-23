@@ -6,10 +6,11 @@ import Home from './components/Home.js';
 import SignupForm from './components/SignupForm'
 import BookCard from './components/BookCard'
 import Navigation from './components/Navigation'
-import BookContainter from './components/BookContainter.js';
-import UserPage from './components/UserPage.js';
-import Login from './components/Login.js';
-
+import UserPage from './components/UserPage.js'
+import Login from './components/Login.js'
+import ReviewContainer from './components/ReviewContainer.js'
+import BookDetail from './components/BookDetail.js'
+import ReviewForm from './components/ReviewForm.js'
 
 function App() {
 const [books, setBooks] = useState([]);
@@ -21,7 +22,7 @@ useEffect(() =>{
 },[])
 
 const fetchBooks = () => {
-  fetch('http://localhost:3000/')
+  fetch('/books')
   .then(res => {
     if(res.ok){
       res.json().then(setBooks)
@@ -38,6 +39,9 @@ if(errors) return <h1>{errors}</h1>
       <GlobalStyle />
       <Navigation />
       <Switch>
+      <Route exact path='/'>
+          <Home />
+        </Route>
         <Route path='users/new'>
           <SignupForm />
         </Route>
@@ -50,10 +54,16 @@ if(errors) return <h1>{errors}</h1>
         <Route path='books/new'>
           <BookCard/>
         </Route>
-        <Route exact path='/'>
-          <BookContainter />
+        <Route exact path='/book/:id'>
+         <BookDetail />
+      </Route>
+        <Route exact path='reviews'>
+          <ReviewContainer />
         </Route>
-      <Home />
+        <Route path='review/new'>
+          <ReviewForm />
+        </Route>
+    
       </Switch>
 
 
@@ -64,7 +74,11 @@ if(errors) return <h1>{errors}</h1>
 export default App
 const GlobalStyle = createGlobalStyle`
     body{
-      background-color: black; 
-      color:white;
+      background-color: papayawhip; 
+      text-align: center;
+      font-weight: bold;
+      padding: 0.25em 1em;
+      font-size: 1em;
+      color: black;
     }
     `
