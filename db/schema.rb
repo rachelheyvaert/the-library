@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2022_11_19_135858) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
@@ -26,8 +23,8 @@ ActiveRecord::Schema.define(version: 2022_11_19_135858) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.bigint "user_id", null: false
+    t.integer "book_id", null: false
+    t.integer "user_id", null: false
     t.integer "rating"
     t.string "review_body"
     t.datetime "created_at", precision: 6, null: false
