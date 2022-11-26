@@ -42,10 +42,24 @@ const BookDetails = ({deleteBook}) => {
       }
     })
   }
+  const handleAddReview = () => {
+    fetch(`/reviews`,{
+      method:'POST',
+      headers: {'Content-Type': 'application/json'},
+      body:JSON.stringify({book_id:id, user_id:1})
+    })
+    .then(res => {
+      if(res.ok){
+        history.push('/users/1')
+      } else {
+        res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+      }
+    })
+  }
 
   if(loading) return <h1>Loading</h1>
   if(errors) return <h1>{errors}</h1>
-  const {title, author, description, img_url} = book
+  const {title, author, description, img_url, id} = book
   return (
     <CardDetail>
         <h1>{title}</h1>
@@ -62,9 +76,9 @@ const BookDetails = ({deleteBook}) => {
             </div>
             <img src={img_url}/>
           </div>
-      <button><Link to={`/productions/${id}/edit`}>Edit Production</Link></button>
-      <button onClick={handleDelete}>Delete Production</button>
-      <button onClick={handleBuy} >Buy Ticket</button>
+      <button><Link to={`/book/${id}/edit`}>Edit Book</Link></button>
+      <button onClick={handleDelete}>Delete Book</button>
+      <button onClick={handleAddReview}>Add Review</button>
       </CardDetail>
     )
   }

@@ -50,14 +50,14 @@ if(errors) return <h1>{errors}</h1>
       <Route exact path='/'>
           <Home books={books}/>
         </Route>
-        <Route path='users/new'>
+        <Route path='/signup'>
           <SignupForm updateUser={updateUser}/>
         </Route>
         <Route path='/users/:id'>
         <UserPage />
       </Route>
         <Route path='/login' >
-        <Login />
+        <Login updateUser={updateUser}/>
       </Route>
         <Route path='books/new'>
           <BookCard addBook={addBook}/>
