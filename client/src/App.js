@@ -60,7 +60,7 @@ if(errors) return <h1>{errors}</h1>
         <Login updateUser={updateUser}/>
       </Route>
         <Route path='books/new'>
-          <BookCard addBook={addBook}/>
+          <BookForm addBook={addBook}/>
         </Route>
         <Route exact path='/book/:id'>
          <BookDetail deleteBook={deleteBook}/>
