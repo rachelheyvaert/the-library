@@ -48,7 +48,7 @@ if(errors) return <h1>{errors}</h1>
       <Navigation currentUser={currentUser} updateUser={updateUser} />
       <Switch>
       <Route exact path='/'>
-          <Home />
+          <Home books={books}/>
         </Route>
         <Route path='users/new'>
           <SignupForm updateUser={updateUser}/>

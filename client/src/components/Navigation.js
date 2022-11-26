@@ -38,7 +38,7 @@ const Navigation = ({currentUser, updateUser}) => {
               <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/productions/new">New Book</Link>
+              <Link to="/books/new">New Book</Link>
             </li>
             <li>
               <Link to="/review/new">New Review</Link>
@@ -56,7 +56,7 @@ const Navigation = ({currentUser, updateUser}) => {
 
 export default Navigation;
 const NavH1 = styled.h1`
-  font-family: "Splash", bold;
+  font-family: "Splash";
 `;
 const Nav = styled.div`
   display: flex;
@@ -69,7 +69,7 @@ const Menu = styled.div`
   a {
     text-decoration: none;
     color: black;
-    font-family: San Serif;
+    font-family: Times new Roman;
   }
   a:hover {
     color: white;
