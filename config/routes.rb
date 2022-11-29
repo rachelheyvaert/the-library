@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :books, only: [ :index, :show, :create, :update, :destroy]
   get "/books", to: 'books#index'
   get "/me", to: "users#show"
-  get '/signup', to: 'users#new'
+  post '/books/new', to: 'books#create'
   post '/login' => 'sessions#create'
   delete '/logout', to: "sessions#destroy"
   # Routing logic: fallback requests for React Router.

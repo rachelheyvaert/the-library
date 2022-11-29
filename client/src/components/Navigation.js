@@ -32,20 +32,24 @@ const Navigation = ({currentUser, updateUser}) => {
               {currentUser ? <Link to={`/users/${currentUser.id}`}>Account</Link> : null }
             </li>
             <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
               <Link to="/signup">Sign Up</Link>
             </li>
             <li>
               <Link to="/login">Login</Link>
             </li>
             <li>
+              <Link to="/books">Books</Link>
+            </li>
+            <li>
               <Link to="/books/new">New Book</Link>
             </li>
             <li>
-              <Link to="/review/new">New Review</Link>
+              <Link to="/reviews/new">New Review</Link>
             </li>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
+      
           </ul>
         )}
       </Menu>

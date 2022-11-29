@@ -4,24 +4,27 @@ import { Route, Switch } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import Home from './components/Home.js';
 import SignupForm from './components/SignupForm'
-import BookCard from './components/BookCard'
+// import BookCard from './components/BookCard'
 import Navigation from './components/Navigation'
 import UserPage from './components/UserPage.js'
 import Login from './components/Login.js'
 import ReviewContainer from './components/ReviewContainer.js'
 import BookDetail from './components/BookDetail.js'
 import ReviewForm from './components/ReviewForm.js'
+import BookForm from './components/BookForm.js';
+import BookContainter from './components/BookContainter.js';
 
 function App() {
 const [books, setBooks] = useState([]);
 const [errors, setErrors] = useState(false)
 const [currentUser, setCurrentUser] = useState(false)
-
+const [reviews, setReviews] = useState([])
 
 useEffect(() =>{
   fetchBooks()
-  console.log(books)
-  console.log(currentUser)
+  console.log('books',books)
+  console.log('user', currentUser)
+  console.log('reviews', reviews)
 },[])
 
 const fetchBooks = () => {
@@ -38,6 +41,8 @@ const fetchBooks = () => {
 }
 
 const addBook = (book) => setBooks(current => [...current, book])
+const addReview = (review) => setReviews(current => [...current, review])
+
 const updateUser = (user) => setCurrentUser(user)
 const deleteBook = (id) => setBooks(current => current.filter(b => b.id !== id))
 if(errors) return <h1>{errors}</h1>
@@ -59,8 +64,11 @@ if(errors) return <h1>{errors}</h1>
         <Route path='/login' >
         <Login updateUser={updateUser}/>
       </Route>
-        <Route path='books/new'>
+        <Route exact path='books/new'>
           <BookForm addBook={addBook}/>
+        </Route>
+        <Route exact path='books/'>
+          <BookContainter />
         </Route>
         <Route exact path='/book/:id'>
          <BookDetail deleteBook={deleteBook}/>
@@ -68,8 +76,8 @@ if(errors) return <h1>{errors}</h1>
         <Route exact path='reviews'>
           <ReviewContainer />
         </Route>
-        <Route path='review/new'>
-          <ReviewForm />
+        <Route exact path='reviews/new'>
+          <ReviewForm addReview={addReview} />
         </Route>
     
       </Switch>

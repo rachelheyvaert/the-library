@@ -30,11 +30,16 @@ const BookContainter = ({books}) => {
 
 export default BookContainter
 const Title = styled.h1`
-    font-family: "Splash";
+    font-family: "Georgia, serif";
 `
 const CardContainer = styled.ul`
-    display:flex;
-    flex-direction:column;
-    margin: 20 px;
-    width: 10 px
+display:flex;
+spacing: 2px;
+flex-direction:row;
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `

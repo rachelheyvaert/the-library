@@ -88,7 +88,7 @@ const CardDetail = styled.li`
     display:flex;
     flex-direction:column;
     justify-content:start;
-    font-family:Arial, sans-serif;
+    font-family:"Georgia, serif";
     margin:5px;
     h1{
       font-size:60px;

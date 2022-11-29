@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 const BookCard = ({book}) => {
-  const {title, author, description, page_count, img_url, id} = book
+  const {title, author, page_count, img_url, id} = book
   console.log(book)
 
 
@@ -13,7 +13,7 @@ const BookCard = ({book}) => {
 <Card>
 <div>
   <Link to={`/book/${id}`}><h3>{title}</h3></Link>
-  <img src={img_url}/>
+  <img src={img_url} />
   <p>By: {author}</p>
   {/* <p>{description}</p> */}
   <p>Pages: {page_count}</p>
@@ -25,12 +25,11 @@ const BookCard = ({book}) => {
 export default BookCard
 const Card = styled.li`
     display:flex;
-  width: flex;
-   flex-direction:row;
-   flex-wrap: wrap;
+  width: 100px;
+  max-Width: 350px;
     justify-content:start;
-    font-family: "Splash";
-    margin-left:50px;
+    font-family: "Georgia, serif";
+    margin-left: 400px;
     &:hover {
       transform: scale(1.15);
       transform-origin: top left;
@@ -49,7 +48,4 @@ const Card = styled.li`
      position:absolute;
     
     }
-  `
-  const Descrip = styled.p`
-  
   `

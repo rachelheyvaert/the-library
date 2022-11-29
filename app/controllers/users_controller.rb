@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
-    before_action :redirect_if_not_logged_in
-    skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
+    skip_before_action :authenticate_user, only: [:create]
     
-    def new
-        @user = User.new
-    end
     
     def show 
       user = User.find(params[:id])
